@@ -4,7 +4,7 @@
     {% if module.children %}
         {% for child in module.children %}
             <li>
-                {% if child.date %}<span class="float-right dim">{{ child.date|date }}</span>{% endif %}
+                {% if child.date %}<span class="float-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %} dim">{{ child.date|date }}</span>{% endif %}
                 {% if child.warning %}<span class="warning">{{ child.title }}</span>{% else %}<a href="{{ child.link }}" target="_blank" class="nowrap"><span class="icon-open-external"></span> {{ child.title }}</a>{% endif %}
             </li>
         {% endfor %}
