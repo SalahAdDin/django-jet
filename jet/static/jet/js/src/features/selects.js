@@ -3,10 +3,11 @@ require('select2');
 var $ = require('jquery');
 var t = require('../utils/translate');
 
-var Select2 = function() { };
+var Select2 = function () {
+};
 
 Select2.prototype = {
-    updateAttachBody: function(AttachBody) {
+    updateAttachBody: function (AttachBody) {
         AttachBody.prototype._positionDropdown = function () {
             var $window = $(window);
 
@@ -39,10 +40,20 @@ Select2.prototype = {
             var enoughRoomAbove = viewport.top < (offset.top - dropdown.height);
             var enoughRoomBelow = viewport.bottom > (offset.bottom + dropdown.height);
 
-            var css = {
-                left: offset.left,
-                top: container.bottom
-            };
+            if (django.jQuery.translations.languag_bidi) {
+
+                var css = {
+                    right: offset.right,
+                    top: container.bottom
+                };
+            } else {
+
+                var css = {
+                    left: offset.left,
+                    top: container.bottom
+                };
+            }
+
 
             if (!isCurrentlyAbove && !isCurrentlyBelow) {
                 newDirection = 'below';
@@ -98,7 +109,7 @@ Select2.prototype = {
             return $container;
         };
     },
-    updateDropdownAdapter: function(DropdownAdapter) {
+    updateDropdownAdapter: function (DropdownAdapter) {
         DropdownAdapter.prototype.render = function () {
             var buttons = '';
 
@@ -144,7 +155,7 @@ Select2.prototype = {
             return $dropdown;
         };
     },
-    initSelect: function($select, DropdownAdapter) {
+    initSelect: function ($select, DropdownAdapter) {
         var settings = {
             theme: 'jet',
             dropdownAdapter: DropdownAdapter,
@@ -180,22 +191,22 @@ Select2.prototype = {
                     var more = (params.page * pageSize) < data.total;
 
                     return {
-                      results: data.items,
-                      pagination: {
-                        more: more
-                      }
+                        results: data.items,
+                        pagination: {
+                            more: more
+                        }
                     };
                 }
             };
         }
 
-        $select.on('change', function(e) {
+        $select.on('change', function (e) {
             django.jQuery($select.get(0)).trigger(e);
         });
 
         $select.select2(settings);
     },
-    initSelect2: function() {
+    initSelect2: function () {
         var self = this;
         var AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
         var DropdownAdapter = $.fn.select2.amd.require('select2/dropdown');
@@ -212,7 +223,7 @@ Select2.prototype = {
         DropdownAdapter = Utils.Decorate(DropdownAdapter, MinimumResultsForSearch);
         DropdownAdapter = Utils.Decorate(DropdownAdapter, closeOnSelect);
 
-        $(document).on('select:init', 'select', function() {
+        $(document).on('select:init', 'select', function () {
             var $select = $(this);
 
             if ($select.parents('.empty-form').length > 0) {
@@ -224,11 +235,11 @@ Select2.prototype = {
 
         $('select').trigger('select:init');
 
-        $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
+        $('.inline-group').on('inline-group-row:added', function (e, $inlineItem) {
             $inlineItem.find('select').trigger('select:init');
         });
     },
-    run: function() {
+    run: function () {
         try {
             this.initSelect2();
         } catch (e) {
@@ -237,6 +248,6 @@ Select2.prototype = {
     }
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
     new Select2().run();
 });

@@ -1,0 +1,39 @@
+.submit-row input {
+    float: left;
+}
+
+.sidebar {
+    right: 0;
+    transform: translate3d(100%, 0, 0)
+}
+
+.sidebar-container-toggle {
+    float: right;
+}
+
+.user-tools ul {
+    left: 20px;
+    left: 1.42857rem;
+}
+
+.user-tools ul {
+    left: 20px;
+    right: auto;
+}
+
+.dashboard-tools {
+    left: 215px;
+}
+
+.aligned label {
+    padding: 0 0 3px 1em;
+    float: right;
+}
+
+.aligned .form-row input {
+    margin-left: 5px;
+}
+
+form .aligned p.help, form .aligned div.help {
+    clear: right;
+}
