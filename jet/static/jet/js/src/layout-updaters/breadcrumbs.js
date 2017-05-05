@@ -8,11 +8,7 @@ BreadcrumbsUpdater.prototype = {
     replaceSeparators: function($breadcrumbs) {
         var html = $breadcrumbs.html();
 
-        if(django.jQuery.translations.languag_bidi){
-            html = html.replace(/›/g, '<span class="icon-arrow-left breadcrumbs-separator"></span>');
-        }else{
         html = html.replace(/›/g, '<span class="icon-arrow-right breadcrumbs-separator"></span>');
-        }
 
         $breadcrumbs.html(html);
     },
