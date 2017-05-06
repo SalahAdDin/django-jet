@@ -56,10 +56,10 @@
     font-size: 22px;
     cursor: pointer;
     transition: transform 0.3s;
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
 
     body.menu-pinned & {
-      transform: rotate(45deg);
+      transform: rotate(-45deg);
     }
 
     &:hover {
