@@ -201,7 +201,7 @@
     &, &:visited, &:hover {
       display: block;
       color: $sidebar-link-color;
-      padding: 8px 12px 8px 20px;
+      padding: 8px 20px 8px 12px;
       vertical-align: middle;
       transition: color $transitions-duration, background-color $transitions-duration;
       position: relative;
@@ -546,7 +546,7 @@
     vertical-align: middle;
     cursor: pointer;
     line-height: 31px;
-    padding: 10px 0 10px 20px;
+    padding: 10px 20px 10px 0px;
 
     &:hover {
       color: $hover-link-color;
