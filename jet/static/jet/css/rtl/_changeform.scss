@@ -80,7 +80,7 @@ form {
 .aligned {
   label {
     display: block;
-    padding: 8px 10px 0 0;
+    padding: 8px 0 0 10px;
     float: right;
     width: 160px;
     word-wrap: break-word;
@@ -308,7 +308,7 @@ fieldset.monospace textarea {
 
   input {
     &, &:visited, &:hover {
-      margin: 0 5px 5px 0;
+      margin: 0 0 5px 5px;
       padding: 0 20px;
       font-size: 12px;
 
@@ -320,7 +320,7 @@ fieldset.monospace textarea {
     }
 
     &.default {
-      margin: 0 8px 5px 0;
+      margin: 0 0 5px 8px;
 
       @include for-phone {
         display: block;
@@ -338,7 +338,7 @@ fieldset.monospace textarea {
     display: block;
     float: right;
     padding: 0;
-    margin: 0 5px 5px 0;
+    margin: 0 0 5px 5px;
 
     @include for-phone {
       float: none;
@@ -400,7 +400,7 @@ body.popup .submit-row {
 .vDateField, .vTimeField {
   margin-left: 2px;
   margin-bottom: 4px;
-  border-radius: 4px 0 0 4px !important;
+  border-radius: 0 4px 4px 0 !important;
   border-left-width: 0 !important;
 
   .results & {
@@ -430,7 +430,7 @@ body.popup .submit-row {
       display: inline-block;
       vertical-align: middle;
       text-align: center;
-      border-radius: 0 4px 4px 0;
+      border-radius: 4px 0 0 4px;
     }
 
     &:hover span {
@@ -720,7 +720,7 @@ body.popup .submit-row {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      padding: 8px 10px 8px 20px;
+      padding: 8px 20px 8px 10px;
       color: $dim-text-color;
       transition: background-color $transitions-duration, color $transitions-duration;
     }
@@ -994,7 +994,7 @@ form .related-widget-wrapper ul {
     a, a:hover, a:visited {
       display: inline-block;
       padding: 12px 4px;
-      margin: 0 8px 0 0;
+      margin: 0 0 0 8px;
       border-bottom: 2px solid transparent;
       position: relative;
       top: 2px;

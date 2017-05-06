@@ -6,7 +6,7 @@
   display: none;
   background-color: $sidebar-contrast-background-color;
   color: $sidebar-contrast-text-color;
-  padding: 14px 32px 14px 36px;
+  padding: 14px 36px 14px 32px;
   text-align: center;
   position: relative;
   min-height: 52px;
@@ -158,7 +158,7 @@
 
     li.user-tools-welcome-msg {
       font-weight: bold;
-      padding: 0 10px 0 14px;
+      padding: 0 14px 0 10px;
       line-height: 30px;
 
       @include for-mobile {
@@ -244,7 +244,7 @@
 
   &-theme-link {
     display: inline-block;
-    margin: 0 5px 5px 0;
+    margin: 0 0 5px 5px;
     width: 14px;
     height: 14px;
     border: 1px solid $top-dropdown-contrast-background-color;
@@ -253,7 +253,7 @@
     @include for-mobile {
       width: 24px;
       height: 24px;
-      margin: 0 8px 8px 0;
+      margin: 0 0 8px 8px;
     }
 
     &:last-child {

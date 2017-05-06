@@ -60,12 +60,12 @@
       right: 250px;
       z-index: 5;
       width: 100px;
-      padding: 14px 6px 14px 0;
+      padding: 14px 0 14px 6px;
       text-align: center;
       margin-right: -100px;
       box-sizing: border-box;
 
-      border-radius: 6px 0 0 6px;
+      border-radius: 0 6px 6px 0;
       transition: background-color $transitions-duration, color $transitions-duration;
 
       @include for-mobile {

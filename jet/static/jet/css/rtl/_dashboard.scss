@@ -213,7 +213,7 @@ ul.actionlist li {
     }
 
     &-header {
-      padding: 0 10px 0 6px;
+      padding: 0 6px 0 10px;
 
       &-title {
         display: block;
@@ -452,7 +452,7 @@ ul.actionlist li {
     }
 
     .select2-selection {
-      border-radius: 4px 0 0 4px !important;
+      border-radius: 0 4px 4px 0 !important;
       border-width: 0;
 
       @include for-mobile {
@@ -463,7 +463,7 @@ ul.actionlist li {
   }
 
   &-link {
-    border-radius: 0 4px 4px 0 !important;
+    border-radius: 4px 0 0 4px !important;
     padding: 0 10px !important;
 
     @include for-mobile {

@@ -78,11 +78,11 @@ tfoot td {
   font-size: 12px;
 
   &:first-child {
-    border-radius: 4px 0 0 0;
+    border-radius: 0 4px 0 0;
   }
 
   &:last-child {
-    border-radius: 0 4px 0 0;
+    border-radius: 4px 0 0 0;
   }
 
   &:first-child:last-child {
