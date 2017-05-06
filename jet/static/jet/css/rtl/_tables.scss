@@ -44,7 +44,7 @@ table {
   thead th {
     background: $content-contrast2-background-color;
     color: $content-contrast2-text-color;
-    text-transform: uppercase;
+
     transition: background-color $fast-transitions-duration;
 
     a:link, a:visited {

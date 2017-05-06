@@ -1,4 +1,8 @@
 .submit-row input {
+    float: right;
+}
+
+.submit-row p.deletelink-box {
     float: left;
 }
 
