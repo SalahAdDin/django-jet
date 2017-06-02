@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-06 07:31+0000\n"
+"POT-Creation-Date: 2017-06-02 15:36+0000\n"
 "PO-Revision-Date: 2017-02-12 17:28+0300\n"
 "Last-Translator: Bashar <poedit@bashar.com>\n"
 "Language-Team: \n"
@@ -53,6 +53,9 @@ msgstr "قائمة تراسل \"django-users\" الخاصة بجانغو"
 
 msgid "Django irc channel"
 msgstr "قناة الآي آر سي الخاصة بجانغو"
+
+msgid "Application models"
+msgstr "نماذج التطبيقات"
 
 msgid "Revoke access"
 msgstr "سحب التصريح"
@@ -192,9 +195,6 @@ msgstr "العنوان"
 msgid "module"
 msgstr "البرنامج"
 
-msgid "Application models"
-msgstr "نماذج التطبيقات"
-
 msgid "application name"
 msgstr "إسم التطبيق"
 
@@ -261,11 +261,17 @@ msgstr "يجب عليك تنصيب حزمة بايثون FeedParser"
 msgid "You must provide a valid feed URL"
 msgstr "يجب عليك تزويد رابط تلقيم صحيح"
 
+msgid "Delete widget"
+msgstr "حذف الودجة"
+
 msgid "Are you sure want to delete this widget?"
 msgstr "هل أنت متأكد من حذف هذه الودجة؟"
 
 msgid "widgets"
 msgstr "الودجات"
+
+msgid "available"
+msgstr "متاح"
 
 msgid "initials"
 msgstr "الحروف الأولية من الإسم"
@@ -282,9 +288,6 @@ msgstr "هل أنت متأكد من إعادة ضبط الودجة؟"
 msgid "Change"
 msgstr "غير"
 
-msgid "Delete widget"
-msgstr "حذف الودجة"
-
 msgid "Delete"
 msgstr "إحذف"
 
@@ -297,9 +300,6 @@ msgstr "لا يوجد شئ للعرض"
 
 msgid "Date"
 msgstr "التأريخ"
-
-msgid "available"
-msgstr "متاح"
 
 msgid "None available"
 msgstr "لا شيئ متاح"
