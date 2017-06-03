@@ -211,8 +211,8 @@ Select2.prototype = {
         DropdownAdapter = Utils.Decorate(DropdownAdapter, AttachBody);
         DropdownAdapter = Utils.Decorate(DropdownAdapter, MinimumResultsForSearch);
         DropdownAdapter = Utils.Decorate(DropdownAdapter, closeOnSelect);
-
-        $(document).on('select:init', 'select', function() {
+        var newselctor = $("select").not('.django-select2');
+        newselctor.on('select:init',  function () {
             var $select = $(this);
 
             if ($select.parents('.empty-form').length > 0) {
@@ -222,10 +222,10 @@ Select2.prototype = {
             self.initSelect($select, DropdownAdapter);
         });
 
-        $('select').trigger('select:init');
+        newselctor.trigger('select:init');
 
         $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
-            $inlineItem.find('select').trigger('select:init');
+            $inlineItem.find(newselctor).trigger('select:init');
         });
     },
     run: function() {
