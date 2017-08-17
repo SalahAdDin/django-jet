@@ -13,7 +13,7 @@
 
         {% for model in app.models %}
             <li>
-                <span class="float-right">
+                <span class="float-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
                     {% if model.add_url %}
                         <a href="{{ model.add_url }}" class="addlink" title="{% trans 'Add' %}"></a>
                     {% else %}

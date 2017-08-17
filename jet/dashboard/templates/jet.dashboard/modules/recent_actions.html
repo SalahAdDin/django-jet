@@ -8,7 +8,7 @@
     {% else %}
         {% for entry in module.children %}
             <li>
-                <span class="float-right">
+                <span class="float-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
                     <span class="icon-user tooltip" title="{{ entry.user }}"></span>
                     <span class="icon-clock tooltip" title="{{ entry.action_time }}"></span>
                 </span>

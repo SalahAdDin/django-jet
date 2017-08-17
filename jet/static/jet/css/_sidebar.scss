@@ -120,7 +120,7 @@
       &, &:visited, &:hover {
         display: inline-block;
         font-size: 14px;
-        text-transform: uppercase;
+
         color: $sidebar-link-color;
         line-height: $sidebar-header-height;
         padding: 0 16px;
@@ -194,7 +194,7 @@
   &-title {
     display: block;
     color: $sidebar-text-color;
-    text-transform: uppercase;
+
     font-size: 11px;
     font-weight: bold;
     overflow: hidden;
@@ -245,7 +245,7 @@
 
       &.icon {
         font-size: 11px;
-        text-transform: uppercase;
+
       }
     }
 
@@ -283,7 +283,7 @@
       font-size: 11px;
       text-align: center;
       padding: 8px 0;
-      text-transform: uppercase;
+
       transition: color $transitions-duration, background-color $transitions-duration;
 
       @include for-mobile {
@@ -503,7 +503,7 @@
     &-title {
       font-size: 12px;
       font-weight: bold;
-      text-transform: uppercase;
+
       padding: 20px;
       overflow: hidden;
       text-overflow: ellipsis;

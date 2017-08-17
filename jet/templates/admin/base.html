@@ -11,12 +11,19 @@
 
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/vendor.css" as url %}{{ url|jet_append_version }}" />
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/icons/style.css" as url %}{{ url|jet_append_version }}" />
-<link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" as url %}{{ url|jet_append_version }}" class="base-stylesheet" />
+{% if LANGUAGE_BIDI %}
+    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/rtl_base.css" as url %}{{ url|jet_append_version }}" class="base-stylesheet" />
+{% else %}
+    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" as url %}{{ url|jet_append_version }}" class="base-stylesheet" />
+{% endif %}
+
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" as url %}{{ url|jet_append_version }}" class="select2-stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" as url %}{{ url|jet_append_version }}" class="jquery-ui-stylesheet" />
 
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="{% static "jet/js/build/jquery.init.js" as url %}{{ url|jet_append_version }}"></script>
 
 <script type="text/javascript" charset="utf-8">
     var DATE_FORMAT = "{% jet_get_date_format %}";
@@ -116,8 +123,8 @@
         <div class="changeform-navigation">
             {% spaceless %}
                 {% jet_previous_object as sibling %}
-                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button left{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
-                    <span class="changeform-navigation-button-icon left icon-arrow-left"></span>
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button {% if LANGUAGE_BIDI %}right{% else %}left{% endif %}{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon {% if LANGUAGE_BIDI %}right{% else %}left{% endif %} icon-arrow-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %}"></span>
                     <span class="changeform-navigation-button-label">
                         {% if sibling %}
                             {{ sibling.label }}
@@ -128,8 +135,8 @@
                 </a>
 
                 {% jet_next_object as sibling %}
-                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button right{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
-                    <span class="changeform-navigation-button-icon right icon-arrow-right"></span>
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button {% if LANGUAGE_BIDI %}left{% else %}right{% endif %}{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon {% if LANGUAGE_BIDI %}left{% else %}right{% endif %} icon-arrow-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}"></span>
                     <span class="changeform-navigation-button-label">
                         {% if sibling %}
                             {{ sibling.label }}
@@ -146,7 +153,7 @@
     {% if not is_popup %}
         <div class="related-popup-container scrollable">
             <a href="#" class="related-popup-back">
-                <span class="related-popup-back-icon icon-arrow-left"></span>
+                <span class="related-popup-back-icon icon-arrow-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %}"></span>
                 <span class="related-popup-back-label">{% trans "back" %}</span>
             </a>
             <span class="icon-refresh loading-indicator"></span>
@@ -206,8 +213,8 @@
                                         {% if model.has_perms %}
                                             <div>
                                                 <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %}>
-                                                    <span class="sidebar-right">
-                                                        <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                                    <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
+                                                        <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}-arrow icon-arrow-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}"></span>
                                                     </span>
                                                     <span class="sidebar-link-label">{{ model.label }}</span>
                                                 </a>
@@ -225,8 +232,8 @@
 
                         <div class="sidebar-section">
                             <div class="sidebar-title">
-                                <span class="sidebar-right">
-                                    <a href="#" class="sidebar-right-edit edit-apps-list"><span class="icon-settings"></span></a>
+                                <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
+                                    <a href="#" class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}-edit edit-apps-list"><span class="icon-settings"></span></a>
                                 </span>
                                 {% trans 'Applications' %}
                             </div>
@@ -235,13 +242,13 @@
                                 {% for app in app_list %}
                                     {% if app.has_perms and app.pinned %}
                                         <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
-                                            <span class="sidebar-left collapsible">
-                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
-                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            <span class="sidebar-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %} collapsible">
+                                                <span class="sidebar-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %}-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %}-unpin icon-cross pin-toggle"></span>
                                             </span>
 
-                                            <span class="sidebar-right">
-                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
+                                                <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}-arrow icon-arrow-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}"></span>
                                             </span>
 
                                             <span class="sidebar-link-label">
@@ -259,13 +266,13 @@
                                 {% for app in app_list %}
                                     {% if app.has_perms and not app.pinned %}
                                         <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
-                                            <span class="sidebar-left collapsible">
-                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
-                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            <span class="sidebar-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %} collapsible">
+                                                <span class="sidebar-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %}-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %}-unpin icon-cross pin-toggle"></span>
                                             </span>
 
-                                            <span class="sidebar-right">
-                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
+                                                <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}-arrow icon-arrow-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}"></span>
                                             </span>
 
                                             <span class="sidebar-link-label">
@@ -297,8 +304,8 @@
                         </div>
 
                         <div class="sidebar-title">
-                            <span class="sidebar-right">
-                                <a href="#" class="sidebar-right-plus bookmarks-add" title="{% trans "Add bookmark" %}"{% if title %} data-title="{{ title }}"{% endif %}><span class="icon-add"></span></a>
+                            <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
+                                <a href="#" class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}-plus bookmarks-add" title="{% trans "Add bookmark" %}"{% if title %} data-title="{{ title }}"{% endif %}><span class="icon-add"></span></a>
                             </span>
                             {% trans 'bookmarks' %}
                         </div>
@@ -307,15 +314,15 @@
                             {% jet_get_bookmarks user as bookmarks %}
                             {% for bookmark in bookmarks %}
                                 <a href="{{ bookmark.url }}" class="sidebar-link bookmark-item">
-                                    <span class="sidebar-right collapsible">
-                                        <span class="sidebar-right-remove bookmarks-remove" data-bookmark-id="{{ bookmark.pk }}">{% trans "Remove" %}</span>
+                                    <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %} collapsible">
+                                        <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}-remove bookmarks-remove" data-bookmark-id="{{ bookmark.pk }}">{% trans "Remove" %}</span>
                                     </span>
                                     <span class="sidebar-link-label">{{ bookmark.title }}</span>
                                 </a>
                             {% endfor %}
                             <a class="sidebar-link bookmark-item clone">
-                                <span class="sidebar-right collapsible">
-                                    <span class="sidebar-right-remove bookmarks-remove">{% trans "Remove" %}</span>
+                                <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %} collapsible">
+                                    <span class="sidebar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}-remove bookmarks-remove">{% trans "Remove" %}</span>
                                 </span>
                                 <span class="sidebar-link-label"></span>
                             </a>
@@ -328,7 +335,7 @@
                 <div class="sidebar-popup-container">
                     <div class="sidebar-popup scrollable">
                         <a href="#" class="sidebar-close sidebar-back">
-                            <span class="sidebar-close-icon icon-arrow-left"></span>
+                            <span class="sidebar-close-icon icon-arrow-{% if LANGUAGE_BIDI %}right{% else %}left{% endif %}"></span>
                         </a>
                         {% for app in app_list %}
                             {% if app.has_perms %}

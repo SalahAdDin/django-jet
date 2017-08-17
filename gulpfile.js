@@ -54,6 +54,25 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('./jet/static/jet/css'));
 });
 
+
+gulp.task('styles_rtl', function() {
+    return gulp.src('./jet/static/jet/css/rtl/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
+        .on('error', function(error) {
+            console.error(error);
+        })
+        .pipe(postcss(cssProcessors))
+        .on('error', function(error) {
+            console.error(error);
+        })
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./jet/static/jet/css'));
+});
+
+
 gulp.task('vendor-styles', function() {
     return merge(
         gulp.src('./node_modules/jquery-ui/themes/base/images/*')
@@ -126,6 +145,7 @@ gulp.task('build', ['scripts', 'styles', 'vendor-styles', 'vendor-translations',
 gulp.task('watch', function() {
     gulp.watch('./jet/static/jet/js/src/**/*.js', ['scripts']);
     gulp.watch('./jet/static/jet/css/**/*.scss', ['styles']);
+    gulp.watch('./jet/static/jet/css/rtl/*.scss', ['styles_rtl']);
     gulp.watch(['./jet/locale/**/*.po', './jet/dashboard/locale/**/*.po'], ['locales']);
 });
 

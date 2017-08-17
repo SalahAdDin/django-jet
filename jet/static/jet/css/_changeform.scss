@@ -361,7 +361,7 @@ fieldset.monospace textarea {
       font-weight: lighter;
       text-align: center;
       padding: 0 20px;
-      text-transform: uppercase;
+
       box-sizing: border-box;
       transition: background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration;
 
@@ -536,7 +536,7 @@ body.popup .submit-row {
     font-weight: bold;
     color: $text-color;
     padding: 20px 24px 0 24px;
-    text-transform: uppercase;
+
     font-size: 12px;
 
     @include for-mobile {
@@ -1001,7 +1001,7 @@ form .related-widget-wrapper ul {
       color: $dim-text-color;
       font-weight: bold;
       font-size: 11px;
-      text-transform: uppercase;
+
       transition: background-color $fast-transitions-duration,
                   color $fast-transitions-duration,
                   border-color $transitions-duration;
