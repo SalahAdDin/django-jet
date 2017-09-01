@@ -293,3 +293,10 @@
     display: block;
   }
 }
+
+.widgets {
+  @include for-desktop {
+    position: absolute;
+    right: 200px;
+  }
+}
