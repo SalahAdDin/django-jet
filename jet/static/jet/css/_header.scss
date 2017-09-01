@@ -105,6 +105,19 @@
   }
 }
 
+#time-info {
+  background-color: $sidebar-contrast-background-color;
+  color: $sidebar-contrast-text-color;
+  text-align: center;
+  box-sizing: border-box;
+
+  [class^="icon-"], [class*=" icon-"] {
+    &:before {
+      margin-right: 0.313em;
+    }
+  }
+}
+
 .user-tools {
   ul {
     position: absolute;
