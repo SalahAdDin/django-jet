@@ -40,6 +40,12 @@
     vertical-align: middle;
   }
 
+  h1 {
+    &#site-name {
+      width: 85%;
+    }
+  }
+
   a, a:visited, a:hover {
     color: $sidebar-contrast-text-color;
   }
